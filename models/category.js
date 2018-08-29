@@ -3,8 +3,9 @@ module.exports = (sequelize, DataTypes) => {
   const Category = sequelize.define('Category', {
     categoryName: DataTypes.STRING
   }, {});
+  
   Category.associate = function(models) {
-    // associations can be defined here
+    Category.belongsToMany(models.User, {through: 'Expenses', foreignKey: 'categoryId'})
   };
   return Category;
 };

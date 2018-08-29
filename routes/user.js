@@ -8,8 +8,6 @@ router
 
     //Login
     // .get('/login', UserCtrl.loginUser)
-
-    //Logout
     // .post('/login', UserCtrl.logoutUser)
 
     //Show Profile

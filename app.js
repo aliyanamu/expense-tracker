@@ -13,8 +13,9 @@ const routeUser = require('./routes/user')
 const routeExpense = require('./routes/expense')
 
 app.get('/', (req, res) => {
-    // res.render('index')
-    res.status(200).json({ message: 'Connected!' });
+    
+    // res.render('homePage')
+    // res.status(200).json({ message: 'Connected!' });
 })
 
 app.use('/user', routeUser);

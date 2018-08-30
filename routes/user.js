@@ -11,7 +11,8 @@ router
     // .post('/login', UserCtrl.logoutUser)
 
     //Show Profile
-    .get('/', UserCtrl.findUser)
+    .get('/', UserCtrl.findAll)
+    .get('/:id', UserCtrl.findUser)
 
     //Edit Expense
     // .get('/edit/:id', UserCtrl.editUser)

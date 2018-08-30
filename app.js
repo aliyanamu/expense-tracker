@@ -14,7 +14,7 @@ const routeExpense = require('./routes/expense')
 
 app.get('/', (req, res) => {
     
-    // res.render('homePage')
+    res.render('homePage')
     // res.status(200).json({ message: 'Connected!' });
 })
 

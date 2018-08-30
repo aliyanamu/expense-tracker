@@ -31,7 +31,14 @@ class Controller {
             categoryName: req.body.categoryName
         })
         .then(data=>{
-            res.redirect('/master/category')
+            Category.findAll({})
+            .then(data => {
+                res.render('addCategory', {datas:data})
+            })
+         
+        })
+        .catch(e => {
+            res.send(e)
         })
     }
     

@@ -44,9 +44,10 @@ router
 
     //Show list category - for admin only
     .get('/master/category', CtrlAdmin.listCategory)
+    .post('/master/category', CtrlAdmin.putCategory)
 
     // //Edit category - for admin only
-    .get('./master/category/edit', CtrlAdmin.editCategory)
-    .post('./master/category/edit', CtrlAdmin.updateCategory)
+    .get('/master/category/edit/:id', CtrlAdmin.editCategory)
+    .post('/master/category/edit/:id', CtrlAdmin.updateCategory)
 
 module.exports = router

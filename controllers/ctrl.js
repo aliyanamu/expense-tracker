@@ -118,7 +118,7 @@ class Controller {
         })
         .catch(err => {
             let errMsg = `error=${err.errors[0].message}`
-            res.redirect(`/${id}/expense/edit?${errMsg}`)
+            res.redirect(`/${id}/expense/add?${errMsg}`)
         })
     }
     
@@ -149,7 +149,7 @@ class Controller {
     static updateExpense(req, res, errNotif) {
         Expense.update(req.body, {where: {id:req.params.eid}})
         .then(data=>{
-            listExpensePerUser(req, res, errNotif)
+            listExpensePerUser(req, res, errNotif, 'expenseList' )
         })
         .catch(err => {
             let errMsg = `error=${err.errors[0].message}`
@@ -157,10 +157,10 @@ class Controller {
         })
     }
 
-    static deleteExpense(req, res, errNotif) {
+    static deleteExpense(req, res, errNotif ) {
         Expense.destroy({where: {id:req.params.eid}})
         .then(data=>{
-            listExpensePerUser(req, res, errNotif)
+            listExpensePerUser(req, res, errNotif, 'expenseList')
         })
         .catch(err => {
             res.send(err)

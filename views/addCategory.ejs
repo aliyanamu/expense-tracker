@@ -29,9 +29,8 @@
             <tr>
                 <td><%=item.categoryName%></td>
                 <td>
-                        <a href="/master/category/edit"><center>edit</center>  </a>
-                       
-                    </td>
+                    <a href="/master/category/edit/<%= item.id%>"><center>edit</center>  </a>    
+                </td>
             </tr>
             <% }) %>
         </tbody>

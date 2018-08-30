@@ -2,6 +2,7 @@ const { User, Expense, Category } = require('../models/')
 
 class Controller {
     
+    /*      User       */
     static findAll(req,res) {
         // res.send('echo user')
         User.findAll({})
@@ -63,6 +64,23 @@ class Controller {
             message += `error=${e.errors[i].message}&`
         }
             res.redirect(`/edit/:id?${message}`)
+        })
+    }
+
+    /*      Expense      */
+
+    static list(req,res, errNotif) {
+        // res.send('echo expense')
+        Expense.findAll({
+            order : [
+                ['createdAt','DESC']
+            ]
+        })
+        .then(exp => {
+            res.render('addExpense', {exp, errNotif})
+        })
+        .catch(err => {
+            res.send(err)
         })
     }
 }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+<body>
+    <div class="profile">
+        <h2>Hi, <%= user.userName %></h2>
+        <form action="/<%= user.id %>/profile" method="POST">
+            <div class="row">
+                <div class="col-1">
+                    <label for="username">First Name</label>
+                </div>
+                <div class="col-2">
+                    <p><%= user.userName %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <label for="email">First Name</label>
+                </div>
+                <div class="col-2">
+                    <p><%= user.userName %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-2">
+                    <input type="text" id="email" name="email" placeholder="Email..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="col-2">
+                    <select id="subject" name="subject" placeholder="..">
+                        <% subjects.forEach( data => { %>
+                        <option value="<%= data.id %>"><%= data.subject_name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

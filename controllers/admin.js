@@ -16,7 +16,9 @@ class Controller {
     }
     
     static listCategory(req, res) {
-        Category.findAll({})
+        Category.findAll({
+            order: [['id', 'ASC']]
+        })
         .then(data => {
             res.render('addCategory', {datas:data})
         })
@@ -35,7 +37,6 @@ class Controller {
             .then(data => {
                 res.render('addCategory', {datas:data})
             })
-         
         })
         .catch(e => {
             res.send(e)
@@ -43,11 +44,25 @@ class Controller {
     }
     
     static editCategory(req, res) {
-        
+        Category.findById(req.params.id)
+            .then(data=>{
+                // res.send(data)
+                res.render('editCategory', {
+                    datas: data, id:req.params.id })  
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
 
     static updateCategory(req, res) {
-
+        Category.update(
+            req.body, 
+            {where: {id:req.params.id}
+        })
+        .then(data=>{
+            res.redirect(`/master/category`)
+        })
     }
 }
 

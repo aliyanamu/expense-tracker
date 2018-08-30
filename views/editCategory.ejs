@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- header -->
+    <form action="/master/category/edit/<%= id %>" method="post">
+        <h3>Previous Category Name:</h3>
+        <h5><%= datas.categoryName%></h5>
+        <h3>New Category Name:</h3>
+        <input type="text" name="categoryName" placeholder="New Category Name">
+       
+        <button type="submit">Edit</button>
+        <button>
+            <a href="/master/category">Cancel Editing</a>
+        </button> 
+    </form>
+    <!-- footer -->
+</body>
+</html>

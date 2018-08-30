@@ -10,7 +10,23 @@
     <!-- list of expense -->
     <a href="/<%= userId %>/expense/overview">Overview</a>
     <a href="/<%= userId %>/expense/add">Add New Expense</a>
-    <br>
+    <br><br>
+    <%var selectedMonth = 0 %>
+    Month Filter:&nbsp;&nbsp;&nbsp;<select name="createdAt" id="">
+        <% let arrMonth = Object.values(month)
+           let arrMonthVal = Object.keys(month)
+           let dateNow = new Date
+           let monthNow = dateNow.getMonth()
+            for (let i = 0; i < 12; i++) { %>
+                <%if (arrMonth[i] == arrMonth[monthNow]) {%>
+        <option value="<%= arrMonthVal[i] %>" selected="<%=arrMonth[monthNow]%>"><%=arrMonth[i]%></option>
+        <%selectedMonth = i+1%>
+        <%} else { %>
+        <option value="<%= arrMonthVal[i] %>"><%=arrMonth[i]%></option>
+        <%selectedMonth = i+1%>
+        <% } %>
+        <% } %>
+    </select>
     <table border="1">
             <thead>
                 <tr>
@@ -23,8 +39,11 @@
             </thead>
             <tbody>
                 <% exp.forEach(item => { %>
+                    <%let date = item.createdAt
+                    let theMonth = date.getMonth()+1
+                    let tgl = formatDate(date)%>
                 <tr>
-                    <td><%=item.createdAt%></td>
+                    <td><%=tgl%></td>
                     <td><%=item.Category.categoryName%></td>
                     <td><%=item.cash%></td>
                     <td><%=item.note%></td>

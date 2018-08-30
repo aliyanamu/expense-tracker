@@ -13,27 +13,27 @@ router
     // .get('/user', Ctrl.findAll)
     
     //Dashboard - expenseList
-    .get('/user/:id/expense', Ctrl.list)
+    // .get('/:id/expense', Ctrl.list)
 
     //Add Expense - addExpense
-    .get('/user/:id/expense/add', Ctrl.addExpense)
-    .post('/user/:id/expense/add', Ctrl.putExpense)
+    // .get('/:id/expense/add', Ctrl.addExpense)
+    // .post('/:id/expense/add', Ctrl.putExpense)
 
     //Edit Expense - editExpense
-    .get('/user/:id/expense/edit/:eid', Ctrl.editExpense)
-    .post('/user/:id/expense/edit/:eid', Ctrl.updateExpense)
+    // .get('/:id/expense/edit/:eid', Ctrl.editExpense)
+    // .post('/:id/expense/edit/:eid', Ctrl.updateExpense)
 
     //Delete Expense
-    .get('/user/:id/expense/delete/:eid', Ctrl.editExpense)
+    // .get('/:id/expense/delete/:eid', Ctrl.editExpense)
 
     //Show Report - expenseReport
-    .get('/user/:id/expense/overview', Ctrl.overview)
+    // .get('/:id/expense/overview', Ctrl.overview)
 
     //Show Profile - profile
-    .get('/user/:id/profile', Ctrl.findUser)
+    .get('/:id/profile', Ctrl.findUser)
 
     //Edit Profile - editUser
-    .get('/user/:id/profile/edit', Ctrl.editUser)
-    .post('/user/:id/profile/edit', Ctrl.updateUser)
+    .get('/:id/profile/edit', Ctrl.editUser)
+    // .post('/user/:id/profile/edit', Ctrl.updateUser)
 
 module.exports = router

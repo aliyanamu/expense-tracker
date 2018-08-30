@@ -1,17 +1,22 @@
 'use strict';
+
+const Sequelize = require('sequelize');
+const op = Sequelize.Op;
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     userName: {
       type: DataTypes.STRING,
       validate: {
-        notEmpty: {msg: 'User name is required'},
+        notEmpty: {msg: 'Username is required'},
         isUnique: function(value, next) {
-          User.find({
-            where: {userName: value},
-            id: {[op.ne]: this.id}
+          User.findOne({
+            where: {
+              userName: value,
+              id: {[op.ne]: this.id}
+            }
           }).then(function(data){
-
-            if (data) return next(`User name is already used`)
+            if (data) next(`Username is already used`)
             else next()
           })
         }
@@ -20,19 +25,20 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
-      isEmail: {
-        args: true,
-        msg: 'Must be a valid email address'
-      },
       validate: {
         notEmpty: {msg: 'Email is required'},
+        isEmail: {
+          args: true,
+          msg: 'Must be a valid email address'
+        },
         isUnique: function(value, next) {
-          User.find({
-            where: {email: value},
-            id: {[op.ne]: this.id}
+          User.findOne({
+            where: {
+              email: value,
+              id: {[op.ne]: this.id}
+            }
           }).then(function(data){
-
-            if (data) return next(`Email is already used`)
+            if (data) next(`Email is already used`)
             else next()
           })
         }

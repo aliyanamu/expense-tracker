@@ -6,26 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <base href="/">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 </head>
 <body>
     <div class="profile">
-        <h2>Hi, <%= user.userName %></h2>
-        <div style="margin: 3% auto; padding: 10px; width: 250px; height: 150px; border: 1px solid black;">
-            <h4>Sign-in & Security</h4>
+        <h2>Hello, <%= user.userName %>!</h2>
+        <div class="probox">
+            <h4><i class="fa fa-unlock-alt"></i>Sign-in & Security</h4>
             <ul>
                 <li>Password & sign-in method</li>
                 <li>Account recory options</li>
             </ul>
         </div>
-        <div>
-            <h4>Personal Info</h4>
+        <div class="probox">
+            <h4><i class="fa fa-user"></i>Personal Info</h4>
             <ul>
-                <li>Name</li>
-                <li>Email</li>
-                <li>Phone</li>
-                <li>Birthday</li>
-                <li>Gender</li>
+                <li class="listuser">
+                    <p>Name</p>
+                    <p><%= user.userName%></p>
+                </li>
+                <li class="listuser">
+                    <p>Email</p>
+                    <p><%= user.email%></p>
+                </li>
+                <li class="listuser">
+                    <p>Phone</p>
+                    <p>081258789078</p>
+                </li>
+                <li class="listuser">
+                    <p>Birthday</p>
+                    <p>01 Jan 1991</p></li>
+                <li class="listuser">
+                    <p>Gender</p>
+                    <p>Male</p></li>
             </ul>
+            <h4 class="linkedit"><a href="/<%= user.id %>/profile/edit">Edit</a></h4 class="linkedit">
         </div>
     </div>
 </body>

@@ -34,19 +34,18 @@ class Controller {
             id: req.params.id,
             }
           })
-        .then(function(row) {
-            res.render('editUser',{row})
+        .then(function(user) {
+            res.render('editUser',{user, err: req.query.error})
         })
         .catch(function(e) {
             res.send(e)
         })
     }
     
-    static updateuser (req, res) {
-        user.update({
+    static updateUser (req, res) {
+        User.update({
           id: req.params.id,
           userName: req.body.userName,
-          password: req.body.password,
           email: req.body.email,
           updatedAt: new Date(),
         }, {
@@ -55,15 +54,17 @@ class Controller {
           }
         })
     .then(function() {
-        res.redirect('/:id/profile')
+        let id = req.params.id
+        res.redirect(`/${id}/profile`)
     })
     .catch(function(e) {
+        let id = req.params.id
         let message = ''
 
         for (let i=0; i< e.errors.length; i++) {
             message += `error=${e.errors[i].message}&`
         }
-            res.redirect(`/:id/profile/edit?${message}`)
+            res.redirect(`/${id}/profile/edit?${message}`)
         })
     }
 

@@ -34,6 +34,6 @@ router
 
     //Edit Profile - editUser
     .get('/:id/profile/edit', Ctrl.editUser)
-    // .post('/:id/profile/edit', Ctrl.updateUser)
+    .post('/:id/profile/edit', Ctrl.updateUser)
 
 module.exports = router

@@ -1,7 +1,8 @@
 const { User, Expense, Category } = require('../models/')
+const listExpensePerUser = require('../helpers/listExpensePerUser')
 
 class Controller {
-    
+        
     /*      User       */
     static findAll(req,res) {
         // res.send('echo user')
@@ -71,32 +72,15 @@ class Controller {
 
     static list(req,res, errNotif) {
         // res.send('echo expense')
-        Expense.findAll({
-            where: {
-                userId: req.params.id
-            },
-            order : [
-                ['createdAt','DESC']
-            ],
-            include : [Category]
-        })
-        .then(expenses => {
-            // res.send(expenses)
-            let id = req.params.id
-            res.render('expenseList', {exp:expenses, userId: id, errNotif})
-           
-        })
-        .catch(err => {
-            res.send(err)
-        })
+        listExpensePerUser(req, res, errNotif)
     }
 
-    static addExpense(req, res, errNotif) {
+    static addExpense(req, res) {
         Category.findAll()
         .then(categories=>{
             // res.send(categories)
             let id = req.params.id
-            res.render('addExpense', {userId:id,cat:categories,errNotif})
+            res.render('addExpense', {userId:id,cat:categories,errNotif:req.query.error})
         })
         .catch(err => {
             res.send(err)
@@ -104,6 +88,7 @@ class Controller {
     }
 
     static putExpense(req, res, errNotif) {
+        let id = req.params.id
         Expense.create({
             userId: req.params.id,
             categoryId : req.body.categoryId,
@@ -112,9 +97,52 @@ class Controller {
         })
         .then(expenses => {
             // res.send(expenses)
-            let id = req.params.id
-            // res.render('expenseList', {exp:expenses, userId: id, errNotif})
             res.redirect(`/${id}/expense`)
+        })
+        .catch(err => {
+            let errMsg = `error=${err.errors[0].message}`
+            res.redirect(`/${id}/expense/edit?${errMsg}`)
+        })
+    }
+    
+    static editExpense(req,res, errNotif) {
+        Expense.findAll({where: {id:req.params.eid},
+        include : [Category]
+        })
+        .then(data=>{
+            // res.send(data)
+            Category.findAll()
+            .then(categories=>{
+                let id = req.params.id
+                let eid = req.params.eid
+                // res.send(data)
+                res.render('editExpense', {
+                    userId:id,
+                    expId:eid,
+                    cat:categories,
+                    datas: data[0],
+                    errNotif})
+            }) 
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static updateExpense(req, res, errNotif) {
+        Expense.update(req.body, {where: {id:req.params.eid}})
+        .then(data=>{
+            listExpensePerUser(req, res, errNotif)
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static deleteExpense(req, res, errNotif) {
+        Expense.destroy({where: {id:req.params.eid}})
+        .then(data=>{
+            listExpensePerUser(req, res, errNotif)
         })
         .catch(err => {
             res.send(err)

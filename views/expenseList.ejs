@@ -29,8 +29,8 @@
                     <td><%=item.cash%></td>
                     <td><%=item.note%></td>
                     <td>
-                        <a href="#">edit </a>
-                        <a href="#"> delete</a>
+                        <a href="/<%= userId %>/expense/edit/<%= item.id %>">edit </a>
+                        <a href="/<%= userId %>/expense/delete/<%= item.id %>"> delete</a>
                     </td>
                 </tr>
                 <% }) %>

@@ -20,11 +20,11 @@ router
     .post('/:id/expense/add', Ctrl.putExpense)
 
     //Edit Expense - editExpense
-    // .get('/:id/expense/edit/:eid', Ctrl.editExpense)
-    // .post('/:id/expense/edit/:eid', Ctrl.updateExpense)
+    .get('/:id/expense/edit/:eid', Ctrl.editExpense)
+    .post('/:id/expense/edit/:eid', Ctrl.updateExpense)
 
     //Delete Expense
-    // .get('/:id/expense/delete/:eid', Ctrl.editExpense)
+    .get('/:id/expense/delete/:eid', Ctrl.deleteExpense)
 
     //Show Report - expenseReport
     // .get('/:id/expense/overview', Ctrl.overview)

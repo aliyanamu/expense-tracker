@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Expense</title>
+</head>
+<body>
+    <!-- header -->
+    <form action="/<%= userId %>/expense/edit/<%= expId %>" method="post">
+        <h3>Amount:</h3>
+        <input type="text" name="cash" value="<%=datas.cash%>">
+        <h3>Note:</h3>
+        <input type="text" name="note" value="<%=datas.note%>">
+        <h3>Category:</h3>
+
+        <select name="categoryId" id="">  
+            <% cat.forEach(item=> { 
+                if(item.categoryName == datas.Category.categoryName) {%>
+            <option value="<%= item.id %>" selected="datas.Category.categoryName">
+                <%= item.categoryName %>
+            </option>
+            <%} else {%>
+            <option value="<%= item.id %>">
+                <%= item.categoryName %>
+            </option>
+            <% }}) %>
+        </select><br><br>
+        <button type="submit">Edit</button>
+    </form>
+    <!-- footer -->
+</body>
+</html>

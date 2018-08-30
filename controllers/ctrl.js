@@ -21,7 +21,7 @@ class Controller {
             }
         })
         .then(user => {
-            res.send(user)
+            res.render('profile', {user})
         })
         .catch(e => {
             res.send(e)
@@ -55,7 +55,7 @@ class Controller {
           }
         })
     .then(function() {
-        res.redirect('/:id')
+        res.redirect('/:id/profile')
     })
     .catch(function(e) {
         let message = ''
@@ -63,7 +63,7 @@ class Controller {
         for (let i=0; i< e.errors.length; i++) {
             message += `error=${e.errors[i].message}&`
         }
-            res.redirect(`/edit/:id?${message}`)
+            res.redirect(`/:id/profile/edit?${message}`)
         })
     }
 

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/aliyanamu/expense-tracker#readme",
   "dependencies": {
     "ejs": "^2.6.1",
+    "exe": "^1.0.2",
     "express": "^4.16.3",
     "pg": "^7.4.3",
     "sequelize": "^4.38.0",

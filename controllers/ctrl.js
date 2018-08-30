@@ -1,6 +1,5 @@
 const { User, Expense, Category } = require('../models/')
 const listExpensePerUser = require('../helpers/listExpensePerUser')
-const overviewPerUser = require('../helpers/overviewPerUser')
 
 class Controller {
         
@@ -73,11 +72,24 @@ class Controller {
     /*      Expense      */
 
     static list(req,res, errNotif) {
-        listExpensePerUser(req, res, errNotif, 'expenseList')
+        listExpensePerUser(req, res, errNotif)
     }
 
-    static overview(req,res, errNotif) {
-        overviewPerUser(req, res, errNotif, 'expenseReport')
+    static overview(req,res) {
+        Expense.all({
+            where: {
+                userId: req.params.id
+            },
+            order: [['categoryId','ASC']]
+        })
+        .then(function(expenses) {
+            console.log(expenses)
+            // res.send(expenses)
+            res.render('expenseReport', {exp:expenses, userId: id})
+        })
+        .catch(err => {
+            res.send(err)
+        })
     }
 
     static addExpense(req, res) {

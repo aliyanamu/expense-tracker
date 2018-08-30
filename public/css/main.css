@@ -115,3 +115,45 @@ input[type=submit]:hover {
     filter: alpha(opacity=70);
     cursor: pointer;
 }
+
+.fa-tags {
+    color: #FFD700;
+    margin-right: 10px;
+}
+
+.expenselist {
+    max-width: 1024px;
+    margin: 0 auto;
+    width: 50%;
+    padding: 0 8%;
+}
+
+.exlist {
+    display: block;
+    background-color: whitesmoke;
+    border-radius: 70px;
+    padding: 5px 25px 35px;
+    margin: 10px;
+}
+
+.datexp {
+    font-size: 20px;
+    font-family: 'Baloo Tammudu', cursive;
+    color: grey;
+}
+
+.catexp {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notexp {
+    font-style: italic;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+.pricexp {
+    color: #FFD700;
+    float: right;
+    
+}

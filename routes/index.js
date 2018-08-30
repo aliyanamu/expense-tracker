@@ -27,8 +27,7 @@ router
     .get('/:id/expense/delete/:eid', Ctrl.deleteExpense)
     
     //Show Report - expenseReport
-
-    // .get('/:id/expense/overview', Ctrl.overview)
+    .get('/:id/expense/overview', Ctrl.overview)
     
     //Show Profile - profile
     .get('/:id/profile', Ctrl.findUser)

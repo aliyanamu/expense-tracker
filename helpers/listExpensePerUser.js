@@ -1,6 +1,6 @@
 const { User, Expense, Category } = require('../models/')
 
-function list (req, res, errNotif, file) {
+function list (req, res, errNotif) {
     Expense.findAll({
         where: {
             userId: req.params.id
@@ -13,7 +13,7 @@ function list (req, res, errNotif, file) {
     .then(expenses => {
         // res.send(expenses)
         let id = req.params.id
-        res.render(file, {exp:expenses, userId: id, errNotif})
+        res.render('expenseList', {exp:expenses, userId: id, errNotif})
        
     })
     .catch(err => {

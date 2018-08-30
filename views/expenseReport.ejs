@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Expense Tracker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <base href="/">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-</head>
+<%- include('header',{}) %>
 <body>
+    <% exp.forEach (e => { %>
+        <p><%= e %></p>
+    <% }) %>
     <canvas id="myChart" width="400" height="400"></canvas>
     <%- include('diagram',{exp:exp}) %>
 </body>

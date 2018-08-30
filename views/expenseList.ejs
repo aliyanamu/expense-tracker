@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<%- include('header',{}) %>
 <body>
     <!-- list of expense -->
     <a href="/<%= userId %>/expense/overview">Overview</a>
     <a href="/<%= userId %>/expense/add">Add New Expense</a>
     <br>
+    <div class="expenselist">
+        <ul>
+            <% exp.forEach(item => { %>
+            <li class="exlist">
+                <h3 class="datexp"><%=item.createdAt%></h3>
+                <h4 class="catexp"><i class="fa fa-tags"></i><%=item.Category.categoryName%></h4>
+                <p class="notexp"><%=item.note%></p>
+                <h4 class="pricexp"><%=item.cash%></h4>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
     <table border="1">
             <thead>
                 <tr>

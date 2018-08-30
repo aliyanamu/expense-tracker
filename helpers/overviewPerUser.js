@@ -2,6 +2,10 @@ const { User, Expense, Category } = require('../models/')
 
 function list (req, res, errNotif, file) {
     Expense.findAll({
+        group:['categoryId'],
+        attributes: [
+            [sequelize.fn('SUM', sequelize.col('cash')), 'total']
+        ],
         where: {
             userId: req.params.id
         },

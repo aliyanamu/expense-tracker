@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
           User.findOne({
             where: {
               userName: value,
-              id: {[op.ne]: this.id}
+              id: {
+                [op.ne]: this.id,
+                [op.eq]: 1
+              }
             }
           }).then(function(data){
             if (data) next(`Username is already used`)
@@ -35,7 +38,10 @@ module.exports = (sequelize, DataTypes) => {
           User.findOne({
             where: {
               email: value,
-              id: {[op.ne]: this.id}
+              id: {
+                [op.ne]: this.id,
+                [op.eq]: 1
+              }
             }
           }).then(function(data){
             if (data) next(`Email is already used`)

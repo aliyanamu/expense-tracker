@@ -1,5 +1,6 @@
 const { User, Expense, Category } = require('../models/')
 const listExpensePerUser = require('../helpers/listExpensePerUser')
+const overviewPerUser = require('../helpers/overviewPerUser')
 
 class Controller {
         
@@ -72,8 +73,11 @@ class Controller {
     /*      Expense      */
 
     static list(req,res, errNotif) {
-        // res.send('echo expense')
-        listExpensePerUser(req, res, errNotif)
+        listExpensePerUser(req, res, errNotif, 'expenseList')
+    }
+
+    static overview(req,res, errNotif) {
+        overviewPerUser(req, res, errNotif, 'expenseReport')
     }
 
     static addExpense(req, res) {

@@ -1,16 +1,11 @@
 id,category
-1,GMC
-2,Mercedes-Benz
-3,Nissan
-4,Ford
-5,Acura
-6,Kia
-7,Honda
-8,Dodge
-9,Toyota
-10,Mitsubishi
-11,Chrysler
-12,Pontiac
-13,Cadillac
-14,BMW
-15,Chevrolet
+1,Food & Beverage
+2,Shopping
+3,Transportation
+4,Bills & Utilities
+5,Entertainment
+6,Health & Fitness
+7,Give & Donations
+8,Investment
+9,Debt Payment
+10,Others

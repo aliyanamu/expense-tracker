@@ -121,7 +121,7 @@ class Controller {
                     expId:eid,
                     cat:categories,
                     datas: data[0],
-                    errNotif})
+                    errNotif:req.query.error})
             }) 
         })
         .catch(err => {
@@ -135,7 +135,8 @@ class Controller {
             listExpensePerUser(req, res, errNotif)
         })
         .catch(err => {
-            res.send(err)
+            let errMsg = `error=${err.errors[0].message}`
+            res.redirect(`/${id}/expense/edit?${errMsg}`)
         })
     }
 

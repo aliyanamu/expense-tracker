@@ -72,12 +72,49 @@ class Controller {
     static list(req,res, errNotif) {
         // res.send('echo expense')
         Expense.findAll({
+            where: {
+                userId: req.params.id
+            },
             order : [
                 ['createdAt','DESC']
-            ]
+            ],
+            include : [Category]
         })
-        .then(exp => {
-            res.render('addExpense', {exp, errNotif})
+        .then(expenses => {
+            // res.send(expenses)
+            let id = req.params.id
+            res.render('expenseList', {exp:expenses, userId: id, errNotif})
+           
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static addExpense(req, res, errNotif) {
+        Category.findAll()
+        .then(categories=>{
+            // res.send(categories)
+            let id = req.params.id
+            res.render('addExpense', {userId:id,cat:categories,errNotif})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static putExpense(req, res, errNotif) {
+        Expense.create({
+            userId: req.params.id,
+            categoryId : req.body.categoryId,
+            cash : req.body.cash,
+            note : req.body.note
+        })
+        .then(expenses => {
+            // res.send(expenses)
+            let id = req.params.id
+            // res.render('expenseList', {exp:expenses, userId: id, errNotif})
+            res.redirect(`/${id}/expense`)
         })
         .catch(err => {
             res.send(err)

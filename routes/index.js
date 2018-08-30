@@ -13,11 +13,11 @@ router
     // .get('/user', Ctrl.findAll)
     
     //Dashboard - expenseList
-    // .get('/:id/expense', Ctrl.list)
+    .get('/:id/expense', Ctrl.list)
 
     //Add Expense - addExpense
-    // .get('/:id/expense/add', Ctrl.addExpense)
-    // .post('/:id/expense/add', Ctrl.putExpense)
+    .get('/:id/expense/add', Ctrl.addExpense)
+    .post('/:id/expense/add', Ctrl.putExpense)
 
     //Edit Expense - editExpense
     // .get('/:id/expense/edit/:eid', Ctrl.editExpense)

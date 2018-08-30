@@ -8,9 +8,10 @@
 </head>
 <body>
     <!-- list of expense -->
-    <a href="">Overview</a>
-    <a href="/:id/expense/add">Add New Expense</a>
-    <table>
+    <a href="/<%= userId %>/expense/overview">Overview</a>
+    <a href="/<%= userId %>/expense/add">Add New Expense</a>
+    <br>
+    <table border="1">
             <thead>
                 <tr>
                     <td>Date</td>
@@ -24,7 +25,7 @@
                 <% exp.forEach(item => { %>
                 <tr>
                     <td><%=item.createdAt%></td>
-                    <td><%=item.category%></td>
+                    <td><%=item.Category.categoryName%></td>
                     <td><%=item.cash%></td>
                     <td><%=item.note%></td>
                     <td>

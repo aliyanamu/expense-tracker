@@ -1,24 +1,25 @@
 const express = require('express'),
       router = express.Router(),
-      UserCtrl = require('../controllers/user');
+      User = require('../controllers/user');
 
 router
     //Register
-    // .get('/register', UserCtrl.addUser)
+    // .get('/register', User.addUser)
 
     //Login
-    // .get('/login', UserCtrl.loginUser)
-    // .post('/login', UserCtrl.logoutUser)
+    // .get('/login', User.loginUser)
+    // .post('/login', User.logoutUser)
 
+    .get('/', User.findAll)
+    
     //Show Profile
-    .get('/', UserCtrl.findAll)
-    .get('/:id', UserCtrl.findUser)
+    .get('/:id', User.findUser)
 
-    //Edit Expense
-    // .get('/edit/:id', UserCtrl.editUser)
-    // .post('/edit/:id', UserCtrl.updateUser)
+    //Edit Profile
+    .get('/edit/:id', User.editUser)
+    .post('/edit/:id', User.updateUser)
 
     //Delete Form
-    // .get('delete/:id', UserCtrl.deleteUser)
+    // .get('delete/:id', User.deleteUser)
 
 module.exports = router

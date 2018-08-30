@@ -1,20 +1,20 @@
 const express = require('express'),
       router = express.Router(),
-      ExpenseCtrl = require('../controllers/expense');
+      Expense = require('../controllers/expense');
 
 router
     //Show List per Date
-    .get('/', ExpenseCtrl.list)
+    .get('/', Expense.list)
 
     //Add Expense
-    // .get('/add', ExpenseCtrl.addExpense)
-    // .post('/add', ExpenseCtrl.putExpense)
+    // .get('/add/user/:uid', Expense.addExpense)
+    // .post('/add/user/:uid', Expense.putExpense)
 
     //Edit Expense
-    // .get('/edit/:id', ExpenseCtrl.editExpense)
-    // .post('/edit/:id', ExpenseCtrl.updateExpense)
+    // .get('/edit/:id/user/:uid', Expense.editExpense)
+    // .post('/edit/:id/user/:uid', Expense.updateExpense)
 
     //Delete Form
-    // .get('/delete/:id', ExpenseCtrl.deleteExpense)
+    // .get('/delete/:id/user/:uid', Expense.deleteExpense)
 
 module.exports = router

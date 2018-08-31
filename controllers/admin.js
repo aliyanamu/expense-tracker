@@ -1,5 +1,4 @@
 const { User, Expense, Category } = require('../models/')
-const listExpensePerUser = require('../helpers/listExpensePerUser')
 
 class Controller {
         

@@ -1,16 +1,33 @@
 const express = require('express'),
       router = express.Router(),
+      app = express(),
       Ctrl = require('../controllers/ctrl'),
       CtrlAdmin = require('../controllers/admin');
 
+      function getSession(req, res, next) {
+          if (req.session.username) {
+              next()
+          } else {
+              res.redirect('/login');
+          }
+      }
 router
+
     //Register
-    // .get('/register', Ctrl.addUser)
+    .get('/register', Ctrl.addUser)
+    .post('/register/success', Ctrl.putUser)
+
+    
+    
 
     //Login
     // .get('/login', Ctrl.loginUser)
     // .post('/login', Ctrl.logoutUser)
 
+
+    // app.use('/:id/expense', getSession)
+    app.use('/:id/user', getSession)
+    app.use('/master', getSession)
     
     //Dashboard - expenseList
     .get('/:id/expense', Ctrl.list)

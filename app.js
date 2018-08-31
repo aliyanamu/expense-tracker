@@ -1,7 +1,13 @@
 const express = require('express'),
       bodyParser = require('body-parser'),
-      app = express();
+      app = express(),
+      session = require('express-session');
 
+app.use(session({
+        secret: 'secret',
+        resave: true,
+        saveUninitialized: true
+    }));
 app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs')

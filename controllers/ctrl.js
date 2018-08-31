@@ -5,6 +5,34 @@ const {sequelize} = require('../models')
 class Controller {
         
     /*      User       */
+    static addUser(req, res) {
+        
+        res.render('registerUser')
+    }
+
+    static putUser(req, res) {
+        User.findAndCountAll({})
+        .then(users => {
+            // let NewId = users.dataValues.count+1
+            // res.send(users.dataValues.count)
+            res.send(users.count);
+            
+            // User.create({
+            //     id: NewId,
+            //     userName: req.body.userName,
+            //     password: req.body.password,
+            //     email: req.body.email
+            // })
+            // .then(p=>{
+            //     res.redirect(`/${NewId}/expense`)
+            // })
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+
+    }
+
     static findAll(req,res) {
         // res.send('echo user')
         User.findAll({})
@@ -169,5 +197,5 @@ class Controller {
         })
     }
 }
-
+// Controller.putUser(req, res)
 module.exports = Controller

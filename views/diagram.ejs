@@ -4,10 +4,32 @@
         type: 'doughnut',
         data: <%- JSON.stringify(exp) %>,
         options: {
+            legend: {
+            display: true,
+            labels: {
+                fontSize: 16,
+                position: 'right'
+            }
+        },
             scales: {
-                yAxes: [{
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero:true,
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        beginAtZero:true,
+                        display: false
                     }
                 }]
             }

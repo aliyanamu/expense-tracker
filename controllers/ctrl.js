@@ -139,14 +139,6 @@ class Controller {
                     borderWidth: 1
                 }]
             }
-            // console.log(expenses[0])
-            // res.send(expenses[0]['total'])
-            
-            // let arrSum = []
-            // expenses.forEach (e => {
-            //     arrSum.push(e.total)
-            // })
-            // res.send(arrSum)
             res.render('expenseReport', {exp:data})
         })
         .catch(err => {
@@ -160,7 +152,7 @@ class Controller {
         .then(categories=>{
             // res.send(categories)
             let id = req.params.id
-            res.render('addExpense', {userId:id,cat:categories,errNotif:req.query.error})
+            res.render('addExpense', {userId:id,cat:categories,err:req.query.error})
         })
         .catch(err => {
             res.send(err)
@@ -201,7 +193,7 @@ class Controller {
                     expId:eid,
                     cat:categories,
                     datas: data[0],
-                    errNotif:req.query.error})
+                    err:req.query.error})
             }) 
         })
         .catch(err => {
@@ -209,10 +201,10 @@ class Controller {
         })
     }
 
-    static updateExpense(req, res, errNotif) {
+    static updateExpense(req, res, err) {
         Expense.update(req.body, {where: {id:req.params.eid}})
         .then(data=>{
-            listExpensePerUser(req, res, errNotif, 'expenseList' )
+            listExpensePerUser(req, res, err, 'expenseList' )
         })
         .catch(err => {
             let errMsg = `error=${err.errors[0].message}`

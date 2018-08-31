@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Expense</title>
-</head>
+<%- include('header') %>
 <body>
-    <!-- header -->
-    <!-- errnotif -->
+    <div class="error">
+        <% if (err && typeof err === 'string') { %>
+            <i class="fa fa-warning" style="font-size:24px;color:red;padding:10px"></i><%= err %>
+        <% } %>
+        <% if (err && typeof err === 'object') { %>
+            <i class="fa fa-warning" style="font-size:24px;color:red;padding:10px"></i>
+            <% err.forEach (e => { %>
+                <%= e %>
+            <% }) %>
+        <% } %>
+    </div>
+    <div class="formAdd">
     <form action="/<%= userId %>/expense/edit/<%= expId %>" method="post">
         <h3>Amount:</h3>
         <input type="text" name="cash" value="<%=datas.cash%>">
@@ -30,6 +35,6 @@
         </select><br><br>
         <button type="submit">Edit</button>
     </form>
-    <!-- footer -->
+</div>
 </body>
 </html>

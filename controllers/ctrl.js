@@ -1,5 +1,6 @@
 const { User, Expense, Category } = require('../models/')
 const listExpensePerUser = require('../helpers/listExpensePerUser')
+const {sequelize} = require('../models')
 
 class Controller {
         
@@ -77,13 +78,14 @@ class Controller {
 
     static overview(req,res) {
         Expense.all({
+            attributes: [[sequelize.fn('sum', sequelize.col('cash')), 'total']],
             where: {
                 userId: req.params.id
             },
-            order: [['categoryId','ASC']]
+            order: [['categoryId','ASC']],
         })
         .then(function(expenses) {
-            console.log(expenses)
+            
             // res.send(expenses)
             res.render('expenseReport', {exp:expenses, userId: id})
         })

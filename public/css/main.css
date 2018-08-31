@@ -132,14 +132,16 @@ input[type=submit]:hover {
     display: block;
     background-color: whitesmoke;
     border-radius: 70px;
-    padding: 5px 25px 35px;
-    margin: 10px;
+    padding: 5px 40px 35px;
+    margin: 15px 10px;
+    box-shadow: 1px 1px 1px #FFD700;
 }
 
 .datexp {
-    font-size: 20px;
+    font-size: 24px;
     font-family: 'Baloo Tammudu', cursive;
     color: grey;
+    margin-bottom: -5px;
 }
 
 .catexp {
@@ -150,10 +152,48 @@ input[type=submit]:hover {
     font-style: italic;
     opacity: 0.8;
     filter: alpha(opacity=80);
+    margin: 5px 0 0 25px;
+    font-family: 'Baloo Tammudu', cursive;
 }
 
 .pricexp {
     color: #FFD700;
     float: right;
-    
+    font-size: 30px;
+    margin: -10px 0 0 -10px;
+}
+
+.filter {
+    margin: 0 25%;
+
+}
+
+#filter {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+
+select, option {
+    background-color: #ff85a2;
+    color: #f2e7bf;
+}
+
+.add-expense {
+    background-color: green;
+    color: #f2e7bf;
+    font-size: 30px;
+    padding: 17px 23px;
+    border-radius: 50px;
+    position: fixed;
+    right: 10%;
+    bottom: 5%;
+}
+
+.fa-edit, .fa-trash-o {
+    color: #ff85a2;
+    background-color: #f2e7bf;
+    margin: 5px 10px -5px;
+    font-size: 16px;
 }

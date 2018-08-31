@@ -3,12 +3,13 @@
 <%- include('header',{}) %>
 <body>
     <!-- list of expense -->
-    <a href="/<%= userId %>/expense/overview">Overview</a>
-    <a href="/<%= userId %>/expense/add">Add New Expense</a>
+    <a class="overview" href="/<%= userId %>/expense/overview">Overview</a>
+    <a class="add-expense" href="/<%= userId %>/expense/add"><i class="fa fa-plus"></i></a>
 
+    <div class="expenselist">
     <br><br>
     <%var selectedMonth = 0 %>
-    Month Filter:&nbsp;&nbsp;&nbsp;<select name="createdAt" id="">
+    <p class="filter">Month Filter:&nbsp;&nbsp;&nbsp;<select name="createdAt" id="filter"></p>
         <% let arrMonth = Object.values(month)
            let arrMonthVal = Object.keys(month)
            let dateNow = new Date
@@ -24,20 +25,21 @@
         <% } %>
     </select>
 
-    <br>
-    <div class="expenselist">
+    
         <ul>
             <% exp.forEach(item => { %>
             <li class="exlist">
-                <h3 class="datexp"><%=item.createdAt%></h3>
+                <h3 class="datexp"><%= formatDate(item.createdAt) %></h3>
                 <h4 class="catexp"><i class="fa fa-tags"></i><%=item.Category.categoryName%></h4>
                 <p class="notexp"><%=item.note%></p>
                 <h4 class="pricexp"><%=item.cash%></h4>
+                <a href="/<%= userId %>/expense/edit/<%= item.id %>"><i class="fa fa-edit"> Edit </i></a>
+                <a href="/<%= userId %>/expense/delete/<%= item.id %>"><i class="fa fa-trash-o"> Delete </i></a>
             </li>
             <% }) %>
         </ul>
     </div>
-    <table border="1">
+    <!-- <table border="1">
             <thead>
                 <tr>
                     <td>Date</td>
@@ -64,6 +66,6 @@
                 </tr>
                 <% }) %>
             </tbody>
-        </table>
+        </table> -->
 </body>
 </html>

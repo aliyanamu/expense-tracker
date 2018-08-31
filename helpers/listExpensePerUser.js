@@ -17,8 +17,7 @@ function list (req, res, errNotif) {
         // res.send(req.body.postedMonth)
         let id = req.params.id
 
-        res.render('expenseList', {exp:expenses, userId: id, errNotif})
-        res.render(file, {
+        res.render('expenseList', {
             exp:expenses, 
             postMonth:req.body.createdAt,
             userId: id, 

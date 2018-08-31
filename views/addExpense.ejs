@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header') %>
+<body>
+    <!-- add new expenses -->
+    <div class="error">
+        <% if (err && typeof err === 'string') { %>
+            <i class="fa fa-warning" style="font-size:24px;color:red;padding:10px"></i><%= err %>
+        <% } %>
+        <% if (err && typeof err === 'object') { %>
+            <i class="fa fa-warning" style="font-size:24px;color:red;padding:10px"></i>
+            <% err.forEach (e => { %>
+                <%= e %>
+            <% }) %>
+        <% } %>
+    </div>
+    <div class="formAdd">
+        <form action="/<%= userId %>/expense/add" method="post">
+            <h3>Amount:</h3>
+            <input type="text" name="cash" value="">
+            <h3>Note:</h3>
+            <input type="text" name="note" value="">
+            <h3>Category:</h3>
+            <select name="categoryId" id="">
+                <% cat.forEach(item=> { %>
+                <option value="<%= item.id %>">
+                    <%= item.categoryName %>
+                </option>
+                <% }) %>
+            </select><br><br>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <!-- footer -->
+</body>
+</html>

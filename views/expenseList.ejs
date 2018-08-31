@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('header',{}) %>
+<body>
+    <!-- list of expense -->
+    <a class="overview" href="/<%= userId %>/expense/overview"><img class="imageview" src="png/doughnut.png"></a>
+    <a class="add-expense" href="/<%= userId %>/expense/add"><i class="fa fa-plus"></i></a>
+
+    <div class="expenselist">
+    <br><br>
+    <%var selectedMonth = 0 %>
+    <p class="filter">Month Filter:&nbsp;&nbsp;&nbsp;<select name="createdAt" id="filter"></p>
+        <% let arrMonth = Object.values(month)
+           let arrMonthVal = Object.keys(month)
+           let dateNow = new Date
+           let monthNow = dateNow.getMonth()
+            for (let i = 0; i < 12; i++) { %>
+                <%if (arrMonth[i] == arrMonth[monthNow]) {%>
+        <option value="<%= arrMonthVal[i] %>" selected="<%=arrMonth[monthNow]%>"><%=arrMonth[i]%></option>
+        <%selectedMonth = i+1%>
+        <%} else { %>
+        <option value="<%= arrMonthVal[i] %>"><%=arrMonth[i]%></option>
+        <%selectedMonth = i+1%>
+        <% } %>
+        <% } %>
+    </select>
+
+    
+        <ul>
+            <% exp.forEach(item => { %>
+            <li class="exlist">
+                <h3 class="datexp"><%= formatDate(item.createdAt) %></h3>
+                <h4 class="catexp"><i class="fa fa-tags"></i><%=item.Category.categoryName%></h4>
+                <p class="notexp"><%=item.note%></p>
+                <h4 class="pricexp"><%=item.cash%></h4>
+                <a href="/<%= userId %>/expense/edit/<%= item.id %>"><i class="fa fa-edit"> Edit </i></a>
+                <a href="/<%= userId %>/expense/delete/<%= item.id %>"><i class="fa fa-trash-o"> Delete </i></a>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+    <!-- <table border="1">
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Category</td>
+                    <td>Amount</td>
+                    <td>Description</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% exp.forEach(item => { %>
+                    <%let date = item.createdAt
+                    let theMonth = date.getMonth()+1
+                    let tgl = formatDate(date)%>
+                <tr>
+                    <td><%=tgl%></td>
+                    <td><%=item.Category.categoryName%></td>
+                    <td><%=item.cash%></td>
+                    <td><%=item.note%></td>
+                    <td>
+                        <a href="/<%= userId %>/expense/edit/<%= item.id %>">edit </a>
+                        <a href="/<%= userId %>/expense/delete/<%= item.id %>"> delete</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table> -->
+</body>
+</html>

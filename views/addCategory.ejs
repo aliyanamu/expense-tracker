@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <!-- header -->
+    <!-- add new expenses -->
+    <form action="/master/category" method="post">
+        <!-- errNotif -->
+            <h3>Category Name:</h3>
+            <input type="text" name="categoryName" value="">
+            
+            <button type="submit">Add</button>
+    </form>
+        <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Category Name</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% datas.forEach(item => { %>
+            <tr>
+                <td><%=item.categoryName%></td>
+                <td>
+                    <a href="/master/category/edit/<%= item.id%>"><center>edit</center>  </a>    
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+        <!-- footer -->
+</body>
+</html>

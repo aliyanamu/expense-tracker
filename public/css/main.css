@@ -1,0 +1,221 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f2e7bf
+}
+
+.homepage {
+    text-align: center;
+    margin: 8% auto;
+}
+.hometext {
+    color: #ff85a2;
+    font-family: 'Baloo Tammudu', cursive;
+    font-size: 60px;
+    margin: 0 0 -5%;
+    word-spacing: 15px;
+    letter-spacing: 2px;
+}
+
+.piggy {
+    margin-left: -5%;
+}
+
+.homebtn {
+    font-size: 22px;
+    margin: auto 40px;
+    padding: 10px 20px;
+    color: #ff85a2;
+    font-family: 'Arial';
+    font-weight: bold;
+    border-radius: 30px;
+    box-shadow: 2px 2px 2px;
+}
+
+.homebtn:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.profile {
+    max-width: 1024px;
+    margin: 8% auto;
+}
+
+.probox {
+    margin: 3% 10% auto auto;
+    padding: 15px 15px 30px;
+    width: 300px;
+    height: auto;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px;
+}
+
+.fa-user, .fa-unlock-alt {
+    padding: 5px 8px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.linkedit {
+    float: right;
+    text-decoration: none;
+}
+
+.row {
+    grid-column: span 6;
+    grid-template-columns: 1fr 3fr;
+    grid-auto-rows: 60px;
+    display: grid;
+}
+
+.col-1, .col-2 {
+    display: inline;
+}
+
+input[type=text] {
+    height: 30px;
+    width: 400px;
+    color: #ff9898;
+    padding-left: 5px;
+    font-weight: bold;
+    border: 1px solid #ff9898;
+}
+
+.error {
+    margin-bottom: 20px;
+}
+
+.editForm {
+    max-width: 1024px;
+    margin: 5% auto;
+}
+
+input[type=submit] {
+    height: 50px;
+    width: 100px;
+    font-size: 16px;
+    box-shadow: 2px 2px 2px 2px;
+}
+
+input[type=submit]:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    cursor: pointer;
+}
+
+.fa-tags {
+    color: #FFD700;
+    margin-right: 10px;
+}
+
+.expenselist {
+    max-width: 1024px;
+    margin: 0 auto;
+    width: 50%;
+    padding: 0 8%;
+}
+
+.exlist {
+    display: block;
+    background-color: whitesmoke;
+    border-radius: 70px;
+    padding: 5px 40px 35px;
+    margin: 15px 10px;
+    box-shadow: 1px 1px 1px #FFD700;
+}
+
+.datexp {
+    font-size: 24px;
+    font-family: 'Baloo Tammudu', cursive;
+    color: grey;
+    margin-bottom: -5px;
+}
+
+.catexp {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notexp {
+    font-style: italic;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    margin: 5px 0 0 25px;
+    font-family: 'Baloo Tammudu', cursive;
+}
+
+.pricexp {
+    color: #FFD700;
+    float: right;
+    font-size: 30px;
+    margin: -10px 0 0 -10px;
+}
+
+.filter {
+    margin: 0 25%;
+
+}
+
+#filter {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+
+select, option {
+    background-color: #ff85a2;
+    color: #f2e7bf;
+}
+
+.add-expense {
+    background-color: green;
+    color: #f2e7bf;
+    font-size: 30px;
+    padding: 17px 23px;
+    border-radius: 50px;
+    position: fixed;
+    right: 10%;
+    bottom: 5%;
+}
+
+.fa-edit, .fa-trash-o {
+    color: #ff85a2;
+    background-color: #f2e7bf;
+    margin: 5px 10px -5px;
+    font-size: 16px;
+}
+
+.overview {
+    position: fixed;
+    right: 10%;
+    top: 5%;
+}
+
+.imageview {
+    width:60px;
+}
+
+.formAdd {
+    width: 500px;
+    height: 600px;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #f2e7bf;
+}
+
+#form input{
+    background-color: #F2E7BF
+}

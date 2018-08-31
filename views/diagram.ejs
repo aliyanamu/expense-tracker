@@ -1,0 +1,38 @@
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: <%- JSON.stringify(exp) %>,
+        options: {
+            legend: {
+            display: true,
+            labels: {
+                fontSize: 16,
+                position: 'right'
+            }
+        },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        beginAtZero:true,
+                        display: false
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                        drawBorder: false
+                    },
+                    ticks: {
+                        beginAtZero:true,
+                        display: false
+                    }
+                }]
+            }
+        }
+    });
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<%- include('header',{}) %>
+<body>
+    <div class="profile">
+        <h2>Hello, <%= user.userName %>!</h2>
+        <div class="probox">
+            <h4><i class="fa fa-unlock-alt"></i>Sign-in & Security</h4>
+            <ul>
+                <li>Password & sign-in method</li>
+                <li>Account recory options</li>
+            </ul>
+        </div>
+        <div class="probox">
+            <h4><i class="fa fa-user"></i>Personal Info</h4>
+            <ul>
+                <li class="listuser">
+                    <p>Name</p>
+                    <p><%= user.userName%></p>
+                </li>
+                <li class="listuser">
+                    <p>Email</p>
+                    <p><%= user.email%></p>
+                </li>
+                <li class="listuser">
+                    <p>Phone</p>
+                    <p>081258789078</p>
+                </li>
+                <li class="listuser">
+                    <p>Birthday</p>
+                    <p>01 Jan 1991</p></li>
+                <li class="listuser">
+                    <p>Gender</p>
+                    <p>Male</p></li>
+            </ul>
+            <h4 class="linkedit"><a href="/<%= user.id %>/profile/edit">Edit</a></h4 class="linkedit">
+        </div>
+    </div>
+</body>
+</html>

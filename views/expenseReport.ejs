@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('header',{}) %>
+<%- include('header') %>
 <body>
-    <% exp.forEach (e => { %>
-        <p><%= e %></p>
-    <% }) %>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="myChart"></canvas>
     <%- include('diagram',{exp:exp}) %>
 </body>
 </html>

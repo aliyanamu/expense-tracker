@@ -105,19 +105,72 @@ class Controller {
     }
 
     static overview(req,res) {
-        Expense.all({
-            attributes: [[sequelize.fn('sum', sequelize.col('cash')), 'total']],
+        Expense.findAll({
+            attributes: ['categoryId', [sequelize.fn('sum', sequelize.col('cash')), 'total']],
             where: {
                 userId: req.params.id
             },
             order: [['categoryId','ASC']],
+            group: ['categoryId']
         })
         .then(function(expenses) {
-            
-            // res.send(expenses)
-            res.render('expenseReport', {exp:expenses, userId: id})
+            let result = [], index = []
+            expenses.forEach(xp => {
+                result.push(xp.dataValues.total);
+                index.push(xp.dataValues.categoryId)
+            })  
+
+            let arrRes = []
+            let cond = false
+            for (let i=1; i <=10; i++) {
+                let sum;
+                for (let j=0; j <index.length; j++) {
+                    if (i === index[j]) {
+                        cond = true
+                        sum = result[j]
+                    }
+                }
+                if (cond === true) {
+                    arrRes.push(sum)
+                }
+            }
+
+            var data = {
+                labels: ["Food & Beverage", "Shopping", "Transportation", "Bills & Utilities", "Entertainment", "Health & Fitness", "Give & Donations", "Investment", "Debt Payment", "Others"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: arrRes,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(230, 200, 90, 0.2)',
+                        'rgba(80, 172, 172, 0.2)',
+                        'rgba(133, 142, 235, 0.2)',
+                        'rgba(225, 199, 94, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(230, 200, 90, 1)',
+                        'rgba(80, 172, 172, 1)',
+                        'rgba(133, 142, 235, 1)',
+                        'rgba(225, 199, 94, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            }
+            res.render('expenseReport', {exp:data})
         })
         .catch(err => {
+            console.log(err)
             res.send(err)
         })
     }
@@ -127,7 +180,7 @@ class Controller {
         .then(categories=>{
             // res.send(categories)
             let id = req.params.id
-            res.render('addExpense', {userId:id,cat:categories,errNotif:req.query.error})
+            res.render('addExpense', {userId:id,cat:categories,err:req.query.error})
         })
         .catch(err => {
             res.send(err)
@@ -168,7 +221,7 @@ class Controller {
                     expId:eid,
                     cat:categories,
                     datas: data[0],
-                    errNotif:req.query.error})
+                    err:req.query.error})
             }) 
         })
         .catch(err => {
@@ -176,10 +229,10 @@ class Controller {
         })
     }
 
-    static updateExpense(req, res, errNotif) {
+    static updateExpense(req, res, err) {
         Expense.update(req.body, {where: {id:req.params.eid}})
         .then(data=>{
-            listExpensePerUser(req, res, errNotif, 'expenseList' )
+            listExpensePerUser(req, res, err, 'expenseList' )
         })
         .catch(err => {
             let errMsg = `error=${err.errors[0].message}`

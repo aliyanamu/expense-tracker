@@ -197,3 +197,25 @@ select, option {
     margin: 5px 10px -5px;
     font-size: 16px;
 }
+
+.overview {
+    position: fixed;
+    right: 10%;
+    top: 5%;
+}
+
+.imageview {
+    width:60px;
+}
+
+.formAdd {
+    width: 500px;
+    height: 600px;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #f2e7bf;
+}
+
+#form input{
+    background-color: #F2E7BF
+}

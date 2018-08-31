@@ -2,6 +2,7 @@
 
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
+const hassPass = require('../helpers/hashPassword')
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -50,7 +51,13 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  }, {
+    hooks: {
+      beforeCreate: (user, options)=>{
+        user.password = hashPass(user.password);
+      }
+    }
+  });
 
   User.associate = function(models) {
     User.belongsToMany(models.Category, {through: 'Expenses', foreignKey: 'categoryId'})
